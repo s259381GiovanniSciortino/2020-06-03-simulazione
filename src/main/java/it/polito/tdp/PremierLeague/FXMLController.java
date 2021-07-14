@@ -44,7 +44,15 @@ public class FXMLController {
 
     @FXML
     void doCreaGrafo(ActionEvent event) {
-
+    	double media;
+    	try {
+    		media = Double.parseDouble(txtGoals.getText());
+    	}catch(NumberFormatException ex) {
+    		txtResult.appendText("Errore, Inserisci un numero di minuti adatto\n");
+    		return;
+    	}
+    	String msg = model.doCreaGrafo(media);
+    	txtResult.appendText(msg);
     }
 
     @FXML
@@ -54,7 +62,8 @@ public class FXMLController {
 
     @FXML
     void doTopPlayer(ActionEvent event) {
-
+    	String msg = model.doTopPlayer();
+    	txtResult.appendText(msg);
     }
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
